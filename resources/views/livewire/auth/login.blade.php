@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 use function Livewire\Volt\{computed, layout, rules, state, title};
@@ -38,7 +39,7 @@ $login = function () {
     $passEmail = false;
     $passUsername = false;
 
-    if (auth()->attempt(
+    if (Auth::attempt(
         [
             'email' => $this->emailUsername,
             'password' => $this->password,
@@ -49,7 +50,7 @@ $login = function () {
         $passEmail = true;
     }
 
-    if (auth()->attempt(
+    if (Auth::attempt(
         [
             'username' => $this->emailUsername,
             'password' => $this->password,
@@ -77,9 +78,9 @@ $togglePassword = function () {
 
 ?>
 
-<div class="flex flex-col justify-center md:items-center md:h-screen md:overflow-y-auto md:min-h-[600px]">
+<div class="flex flex-col justify-center items-center md:h-screen md:overflow-y-auto md:min-h-[600px]">
 
-    <div class="flex flex-col gap-6 max-w-lg px-4 py-8">
+    <div class="flex flex-col gap-6 max-w-lg px-4 py-8 w-full">
 
         <livewire:util.light-dark-mode />
 
@@ -107,7 +108,7 @@ $togglePassword = function () {
 
                 <div class="flex flex-wrap justify-between">
                     <label for="password" class="normal-label">Password</label>
-                    <a href="{{route('auth.register')}}" class="normal-link">Forgot Password?</a>
+                    <a href="{{route('password.request')}}" class="normal-link">Forgot Password?</a>
                 </div>
 
                 <div class="flex gap-2 items-center border dark:border-white p-2 rounded">

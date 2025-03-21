@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\SocialLoginController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -10,23 +11,26 @@ use Livewire\Volt\Volt;
 
 Volt::route('/', 'page.home')->name('home');
 
-Route::name('auth.')->group(function () {
+Route::name('auth.')->prefix('auth')->group(function () {
     Volt::route('/login', 'auth.login')->name('login');
     Volt::route('/register', 'auth.register')->name('register');
 
-    Route::prefix('auth')->group(function () {
-
-        Route::name('google.')->prefix('google')->controller(SocialLoginController::class)->group(function () {
-            Route::get('/redirect', 'google_redirect')->name('login');
-            Route::get('/callback', 'google_callback');
-        });
-
-        Route::name('github.')->prefix('github')->controller(SocialLoginController::class)->group(function () {
-            Route::get('/redirect', 'github_redirect')->name('login');
-            Route::get('/callback', 'github_callback');
-        });
-
+    Route::name('google.')->prefix('google')->controller(SocialLoginController::class)->group(function () {
+        Route::get('/redirect', 'google_redirect')->name('login');
+        Route::get('/callback', 'google_callback');
     });
+
+    Route::name('github.')->prefix('github')->controller(SocialLoginController::class)->group(function () {
+        Route::get('/redirect', 'github_redirect')->name('login');
+        Route::get('/callback', 'github_callback');
+    });
+    
+});
+
+// Password Reset
+Route::name('password.')->prefix('forgot-password')->group(function(){
+    Volt::route('/email-request', 'auth.forgot.email-request')->name('request');
+    Volt::route('/reset-password/{token}', 'auth.forgot.reset-password')->name('reset');
 });
 
 // Route::view('dashboard', 'dashboard')

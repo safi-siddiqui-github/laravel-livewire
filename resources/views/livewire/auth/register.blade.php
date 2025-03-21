@@ -42,9 +42,9 @@ $togglePassword = function () {
 
 ?>
 
-<div class="flex flex-col justify-center md:items-center md:h-screen md:overflow-y-auto md:min-h-[700px]">
+<div class="flex flex-col justify-center items-center md:h-screen md:overflow-y-auto md:min-h-[700px]">
 
-    <div class="flex flex-col gap-6 max-w-lg px-4 py-8">
+    <div class="flex flex-col gap-6 max-w-lg px-4 py-8 w-full">
 
         <livewire:util.light-dark-mode />
 
