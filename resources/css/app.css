@@ -20,6 +20,21 @@
     }
 }
 
+@layer utilities {
+    input:-webkit-autofill {
+        background-color: transparent !important;
+        color: inherit !important;
+        /* -webkit-box-shadow: 0 0 0px 1000px theme('colors.gray.800') inset !important; */
+        -webkit-box-shadow: 0 0 0px 1000px theme('colors.white') inset !important;
+        -webkit-text-fill-color: theme('colors.black') !important;
+    }
+
+    .dark input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px theme('colors.slate.800') inset !important;
+        -webkit-text-fill-color: theme('colors.white') !important;
+    }
+}
+
 /* Links */
 /* .filled-link {
     @apply bg-black dark:bg-white text-white dark:text-black rounded font-medium px-2 py-2 hover:underline cursor-pointer;

@@ -4,7 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-use function Livewire\Volt\{computed, layout, rules, state, title};
+use function Livewire\Volt\{layout, rules, state, title};
 
 layout('livewire.layout.auth');
 title('Login');
@@ -78,7 +78,7 @@ $togglePassword = function () {
 
 ?>
 
-<div class="flex flex-col justify-center items-center md:h-screen md:overflow-y-auto md:min-h-[600px]">
+<div class="flex flex-col justify-center items-center md:h-screen md:overflow-y-auto md:min-h-[500px]">
 
     <div class="flex flex-col gap-6 max-w-lg px-4 py-8 w-full">
 
@@ -111,7 +111,7 @@ $togglePassword = function () {
             <div class="flex flex-col border px-2 py-1 gap-1 rounded">
 
                 <div class="flex items-center gap-1">
-                    <livewire:svg.email class="size-4" />
+                    <livewire:svg.username class="size-4" />
 
                     <label
                         for="emailUsername"
@@ -203,12 +203,12 @@ $togglePassword = function () {
 
             <button
                 type="submit"
-                class="filled-btn">
+                class="border py-1 rounded-full hover:underline">
                 Sign In
             </button>
-            
+
         </form>
 
     </div>
-    
+
 </div>

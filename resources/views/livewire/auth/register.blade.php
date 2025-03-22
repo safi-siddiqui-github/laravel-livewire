@@ -51,58 +51,156 @@ $togglePassword = function () {
 
 ?>
 
-<div class="flex flex-col justify-center items-center md:h-screen md:overflow-y-auto md:min-h-[700px]">
+<div class="flex flex-col justify-center items-center md:h-screen md:overflow-y-auto md:min-h-[650px]">
 
     <div class="flex flex-col gap-6 max-w-lg px-4 py-8 w-full">
 
         <livewire:util.light-dark-mode />
 
         <div class="flex flex-col items-center gap-2">
-            <h2 class="normal-heading">REGISTER</h2>
+            <h2 class="text-4xl">
+                REGISTER
+            </h2>
 
             <div class="flex flex-wrap gap-1 items-center">
-                <p class="normal-text">Already have an account?</p>
-                <a href="{{route('auth.login')}}" class="normal-link">Sign In</a>
+                <p class="">
+                    Already have an account?
+                </p>
+                <a
+                    href="{{route('auth.login')}}"
+                    class="font-medium">
+                    Sign In
+                </a>
             </div>
 
         </div>
 
         <livewire:auth.social-login />
 
-        <form wire:submit="register" class="flex flex-col gap-4 w-full">
+        <form
+            wire:submit="register"
+            class="flex flex-col gap-4 w-full">
 
-            <div class="flex flex-col gap-1">
-                <label for="email" class="normal-label">Email</label>
-                <input type="text" id="email" wire:model="email" class="outlined-input" placeholder="safi@gmail.com" autocomplete="TRUE" />
-                @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
+            <div class="flex flex-col border px-2 py-1 gap-1 rounded">
+
+                <div class="flex items-center gap-1">
+                    <livewire:svg.email class="size-4" />
+
+                    <label
+                        for="email"
+                        class="text-sm font-medium">
+                        Email
+                    </label>
+                </div>
+
+                <input
+                    wire:model="email"
+                    id="email"
+                    type="text"
+                    placeholder="safi@gmail.com"
+                    autocomplete="true"
+                    class="outline-none" />
+
+                @error('email')
+                <p
+                    wire:transition
+                    class="text-red-500 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
+
             </div>
 
-            <div class="flex flex-col gap-1">
-                <label for="username" class="normal-label">Username</label>
-                <input type="text" id="username" wire:model="username" class="outlined-input" placeholder="safi.siddiqui" autocomplete="TRUE" />
-                @error('username') <span class="text-red-500">{{ $message }}</span> @enderror
+            <div class="flex flex-col border px-2 py-1 gap-1 rounded">
+
+                <div class="flex items-center gap-1">
+                    <livewire:svg.username class="size-4" />
+
+                    <label
+                        for="username"
+                        class="text-sm font-medium">
+                        Username
+                    </label>
+                </div>
+
+                <input
+                    wire:model="username"
+                    id="username"
+                    type="text"
+                    placeholder="safi@gmail.com"
+                    autocomplete="true"
+                    class="outline-none" />
+
+                @error('username')
+                <p
+                    wire:transition
+                    class="text-red-500 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
+
             </div>
 
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col border px-2 py-1 gap-1 rounded">
 
-                <label for="password" class="normal-label">Password</label>
+                <div class="flex items-center gap-1">
+                    <livewire:svg.password class="size-4" />
 
-                <div class="flex gap-2 items-center border dark:border-white p-2 rounded">
-                    <input type="{{$passwordType}}" id="password" wire:model="password" class="normal-input w-full" placeholder="**********" />
+                    <label
+                        for="password"
+                        class="text-sm font-medium">
+                        Password
+                    </label>
+                </div>
+
+                <div class="flex">
+                    <input
+                        wire:model="password"
+                        id="password"
+                        type="{{$passwordType}}"
+                        placeholder="**********"
+                        autocomplete="true"
+                        class="outline-none flex-1" />
 
                     <button class="cursor-pointer" type="button" wire:click="togglePassword">
                         @if(!$showPassword)
-                        <livewire:svg.eye-slash class="normal-svg" />
+                        <livewire:svg.eye-slash />
                         @else
-                        <livewire:svg.eye class="normal-svg" />
+                        <livewire:svg.eye />
                         @endif
                     </button>
                 </div>
 
-                @error('password') <span class="text-red-500">{{ $message }}</span> @enderror
+                @error('password')
+                <p
+                    wire:transition
+                    class="text-red-500 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
+
             </div>
 
-            <button type="submit" class="filled-btn">Sign Up</button>
+            <div class="flex gap-2 items-center">
+                <input
+                    id="remember"
+                    type="checkbox"
+                    wire:model="remember"
+                    class="size-4" />
+
+                <label
+                    for="remember"
+                    class="">
+                    Remember me
+                </label>
+            </div>
+
+            <button
+                type="submit"
+                class="border py-1 rounded-full hover:underline">
+                Sign Up
+            </button>
+
         </form>
 
     </div>

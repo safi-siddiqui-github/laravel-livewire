@@ -34,11 +34,11 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        if (!Schema::hasColumn('users', 'deleted_at')) {
-            Schema::table('users', function (Blueprint $table) {
-                $table->softDeletes();
-            });
-        }
+        // if (!Schema::hasColumn('users', 'deleted_at')) {
+        //     Schema::table('users', function (Blueprint $table) {
+        //         $table->softDeletes();
+        //     });
+        // }
     }
 
     /**
@@ -49,10 +49,10 @@ return new class extends Migration
         Schema::dropIfExists('todo_tasks');
         Schema::dropIfExists('todo_projects');
 
-        if (Schema::hasColumn('users', 'deleted_at')) {
-            Schema::table('users', function (Blueprint $table) {
-                $table->dropSoftDeletes();
-            });
-        }
+        // if (Schema::hasColumn('users', 'deleted_at')) {
+        //     Schema::table('users', function (Blueprint $table) {
+        //         $table->dropSoftDeletes();
+        //     });
+        // }
     }
 };

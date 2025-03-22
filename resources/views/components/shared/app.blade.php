@@ -10,8 +10,11 @@
 
 <body
     id="light-dak-mode"
-    class="antialiased dark:bg-slate-800 text-black dark:text-white {{session('darkMode') ? 'dark' : ''}} ">
+    class="antialiased dark:bg-slate-800 text-black dark:text-white relative {{session('darkMode') ? 'dark' : ''}} ">
     {{$slot}}
+
+    
+    
 </body>
 
 </html>

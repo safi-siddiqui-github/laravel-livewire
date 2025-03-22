@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('google_token')->nullable();
             $table->string('github_id')->nullable();
             $table->string('github_token')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
