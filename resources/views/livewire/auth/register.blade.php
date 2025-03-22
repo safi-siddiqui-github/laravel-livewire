@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+
 use function Livewire\Volt\{layout, rules, state, title};
 
 layout('livewire.layout.auth');
@@ -31,8 +34,14 @@ $register = function () {
     $user->password = $this->password;
     $user->save();
 
-    $this->redirectRoute('auth.login');
+    // Verifiaction Email
+    event(new Registered($user));
 
+    // Verifiaction Notice Requires Auth
+    Auth::login($user, $remember = true);
+    session()->regenerate();
+
+    $this->redirectRoute('verification.notice', navigate: true);
 };
 
 $togglePassword = function () {
@@ -67,13 +76,13 @@ $togglePassword = function () {
                 <input type="text" id="email" wire:model="email" class="outlined-input" placeholder="safi@gmail.com" autocomplete="TRUE" />
                 @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
-            
+
             <div class="flex flex-col gap-1">
                 <label for="username" class="normal-label">Username</label>
                 <input type="text" id="username" wire:model="username" class="outlined-input" placeholder="safi.siddiqui" autocomplete="TRUE" />
                 @error('username') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
-            
+
             <div class="flex flex-col gap-1">
 
                 <label for="password" class="normal-label">Password</label>
