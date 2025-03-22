@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NotifyBarEnum;
 use Illuminate\Support\Facades\Password;
 
 use function Livewire\Volt\{layout, rules, state, title};
@@ -18,6 +19,7 @@ $emailRequest = function () {
 
     if ($status === Password::ResetLinkSent) {
         // ok
+        session()->flash('status', NotifyBarEnum::PASSWORD_REQUEST);
         return $this->redirectRoute('home');
     }
 

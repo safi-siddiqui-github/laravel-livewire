@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NotifyBarEnum;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -63,6 +64,8 @@ $login = function () {
 
     if ($passEmail || $passUsername) {
         request()->session()->regenerate();
+        
+        session()->flash('status', NotifyBarEnum::LOGIN_SUCCESS);
         return $this->redirectIntended(route('home'));
     }
 

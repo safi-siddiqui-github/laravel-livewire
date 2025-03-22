@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NotifyBarEnum;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
@@ -51,6 +52,7 @@ $passwordReset = function () {
     );
 
     if ($status === Password::PasswordReset) {
+        session()->flash('status', NotifyBarEnum::PASSWORD_RESET);
         return $this->redirectRoute('auth.login');
     }
 

@@ -13,8 +13,7 @@
     class="antialiased dark:bg-slate-800 text-black dark:text-white relative {{session('darkMode') ? 'dark' : ''}} ">
     {{$slot}}
 
-    
-    
+    <livewire:util.notify-bar />
 </body>
 
 </html>

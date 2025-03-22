@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NotifyBarEnum;
 use App\Http\Controllers\RateLimiterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -51,7 +52,7 @@ $resendLink = function () {
             </h2>
 
             <p class="">
-                Email Verification Link Sent
+                Verify your email with link
             </p>
 
             @error('throttle')

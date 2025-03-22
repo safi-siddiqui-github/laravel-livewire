@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NotifyBarEnum;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,8 @@ $register = function () {
     // Verifiaction Notice Requires Auth
     Auth::login($user, $remember = true);
     session()->regenerate();
-
+    
+    session()->flash('status', NotifyBarEnum::REGISTER_SUCCESS);
     $this->redirectRoute('verification.notice', navigate: true);
 };
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NotifyBarEnum;
 use Illuminate\Support\Facades\Auth;
 
 use function Livewire\Volt\{computed, state};
@@ -9,7 +10,8 @@ $logout = function () {
 
     session()->invalidate();
     session()->regenerateToken();
-
+    
+    session()->flash('status', NotifyBarEnum::LOGOUT_SUCCESS);
     $this->redirectRoute('auth.login');
 };
 
