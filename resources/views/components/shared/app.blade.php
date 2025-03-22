@@ -8,7 +8,9 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="antialiased dark:bg-black {{session('darkMode') ? 'dark' : 'no-dark'}} " id="light-dak-mode">
+<body
+    id="light-dak-mode"
+    class="antialiased dark:bg-slate-800 text-black dark:text-white {{session('darkMode') ? 'dark' : ''}} ">
     {{$slot}}
 </body>
 

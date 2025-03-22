@@ -85,54 +85,130 @@ $togglePassword = function () {
         <livewire:util.light-dark-mode />
 
         <div class="flex flex-col items-center gap-2">
-            <h2 class="normal-heading">LOGIN</h2>
+            <h2 class="text-4xl">
+                LOGIN
+            </h2>
 
             <div class="flex flex-wrap gap-1 items-center">
-                <p class="normal-text">Create your new account?</p>
-                <a href="{{route('auth.register')}}" class="normal-link">Sign Up</a>
+                <p class="">
+                    Create your new account?
+                </p>
+                <a
+                    href="{{route('auth.register')}}"
+                    class="font-medium">
+                    Sign Up
+                </a>
             </div>
 
         </div>
 
         <livewire:auth.social-login />
 
-        <form wire:submit="login" class="flex flex-col gap-4 w-full">
+        <form
+            wire:submit="login"
+            class="flex flex-col gap-4 w-full">
 
-            <div class="flex flex-col gap-1">
-                <label for="emailUsername" class="normal-label">Email/Username</label>
-                <input type="text" id="emailUsername" wire:model="emailUsername" class="outlined-input" placeholder="safi@gmail.com/safi.siddiqui" autocomplete="TRUE" />
-                @error('emailUsername') <span class="text-red-500">{{ $message }}</span> @enderror
-            </div>
+            <div class="flex flex-col border px-2 py-1 gap-1 rounded">
 
-            <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-1">
+                    <livewire:svg.email class="size-4" />
 
-                <div class="flex flex-wrap justify-between">
-                    <label for="password" class="normal-label">Password</label>
-                    <a href="{{route('password.request')}}" class="normal-link">Forgot Password?</a>
+                    <label
+                        for="emailUsername"
+                        class="text-sm font-medium">
+                        Email/Username
+                    </label>
                 </div>
 
-                <div class="flex gap-2 items-center border dark:border-white p-2 rounded">
-                    <input type="{{$passwordType}}" id="password" wire:model="password" class="normal-input w-full" placeholder="**********" />
+                <input
+                    wire:model="emailUsername"
+                    id="emailUsername"
+                    type="text"
+                    placeholder="safi@gmail.com/safi.siddiqui"
+                    autocomplete="true"
+                    class="outline-none" />
+
+                @error('emailUsername')
+                <p
+                    wire:transition
+                    class="text-red-500 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
+
+            </div>
+
+            <div class="flex flex-col border px-2 py-1 gap-1 rounded">
+
+                <div class="flex items-center gap-1">
+                    <livewire:svg.password class="size-4" />
+
+                    <label
+                        for="password"
+                        class="text-sm font-medium">
+                        Password
+                    </label>
+                </div>
+
+                <div class="flex">
+                    <input
+                        wire:model="password"
+                        id="password"
+                        type="{{$passwordType}}"
+                        placeholder="**********"
+                        autocomplete="true"
+                        class="outline-none flex-1" />
 
                     <button class="cursor-pointer" type="button" wire:click="togglePassword">
                         @if(!$showPassword)
-                        <livewire:svg.eye-slash class="normal-svg" />
+                        <livewire:svg.eye-slash />
                         @else
-                        <livewire:svg.eye class="normal-svg" />
+                        <livewire:svg.eye />
                         @endif
                     </button>
                 </div>
 
-                @error('password') <span class="text-red-500">{{ $message }}</span> @enderror
+                @error('password')
+                <p
+                    wire:transition
+                    class="text-red-500 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
+
             </div>
 
-            <div class="flex gap-2 items-center">
-                <input type="checkbox" id="remember" wire:model="remember" class="normal-checkbox" />
-                <label for="remember" class="normal-label">Remember me</label>
+            <div class="flex justify-between flex-wrap">
+
+                <div class="flex gap-2 items-center">
+                    <input
+                        id="remember"
+                        type="checkbox"
+                        wire:model="remember"
+                        class="size-4" />
+
+                    <label
+                        for="remember"
+                        class="">
+                        Remember me
+                    </label>
+                </div>
+
+                <a
+                    href="{{route('password.request')}}"
+                    class="font-medium">
+                    Forgot Password?
+                </a>
             </div>
 
-            <button type="submit" class="filled-btn">Sign In</button>
+            <button
+                type="submit"
+                class="filled-btn">
+                Sign In
+            </button>
+            
         </form>
 
     </div>
+    
 </div>

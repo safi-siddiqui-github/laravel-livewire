@@ -2,7 +2,7 @@
 
 use function Livewire\Volt\{state};
 
-state(["class"=>"size-6 text-black"]);
+state(["class"=>""]);
 
 ?>
 

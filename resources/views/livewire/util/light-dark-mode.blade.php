@@ -35,11 +35,13 @@ $toggleDarkMode = function () {
             //window.location.reload();
         });
     ">
-    <button @click="darkMode=!darkMode" type="button" class="outlined-svg-btn">
+    <button @click="darkMode=!darkMode" type="button" class="flex items-center gap-1">
         @if($darkMode)
-        <livewire:svg.moon class="normal-svg" />
+        <span>Dark</span>
+        <livewire:svg.moon />
         @else
-        <livewire:svg.sun class="normal-svg" />
+        <span>Light</span>
+        <livewire:svg.sun />
         @endif
     </button>
 
